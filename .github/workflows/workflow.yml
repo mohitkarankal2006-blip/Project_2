@@ -1,14 +1,13 @@
-name: CI
+name: Deploy
 
-on: push
+on:
+ workflow_dispatch:
+ push:
+  branches: [main]
 
 jobs:
  deploy:
      runs-on: ubuntu-latest
-     environment: Production
      steps:
        - uses: actions/checkout@v4
-       - name: Depoly
-         env:
-           TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-         run: echo "Deploying to production"
+       - run: echo "Deployed"
